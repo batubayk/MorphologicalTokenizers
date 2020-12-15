@@ -1,0 +1,5 @@
+.
+# For Heroku
+gunicorn
+# For the clients
+requests
