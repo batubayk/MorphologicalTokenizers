@@ -1,7 +1,10 @@
+import os, re, pickle, sys, math, time
+package_directory = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0,package_directory)
+
 from tokenizers import (CharBPETokenizer,
                         SentencePieceBPETokenizer,
                         BertWordPieceTokenizer)
-import os, re, pickle, sys, math, time
 from hungarian_morphological_tokenizer import HungarianMorphologicalTokenizer
 from hungarian_root_morphological_tokenizer import HungarianRootMorphologicalTokenizer
 from turkish_morphological_tokenizer import TurkishMorphologicalTokenizer
@@ -10,7 +13,6 @@ from whitespace_tokenizer import WhiteSpaceTokenizer
 from sentencepice_tokenizer import SPTokenizer
 from english_root_stem_tokenizer import EnglishStemTokenizer
 import configs
-package_directory = os.path.dirname(os.path.abspath(__file__))
 
 class Tokenizers():
     def __init__(self, tokenizer_type):
