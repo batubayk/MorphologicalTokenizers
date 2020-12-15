@@ -9,15 +9,13 @@ import pickle
 import time
 from vocabulary import Vocabulary
 import configs
-sys.path.insert(0, "/Users/bbaykara/PycharmProjects/emmorphpy")
-sys.path.insert(0, "/Users/bbaykara/PycharmProjects/purepospy")
 
 class HungarianRootMorphologicalTokenizer:
 
-    def __init__(self, pos_tagger_model_path='data/hu_news/data/szeged.model'):
+    def __init__(self, pos_tagger_model_path='purepospy/purepospy/szeged.model'):
         self.vocab = Vocabulary()
         self.pos_tagger = PurePOS(pos_tagger_model_path)
-        self.morph_analyzer = EmMorphPy(hfst_lookup='/Users/bbaykara/Downloads/hfst/bin/hfst-lookup')
+        self.morph_analyzer = EmMorphPy(hfst_lookup='data/hfst/bin/hfst-lookup')
 
     def count_morphs(self, file, total_line_count, begin, end):
         counter = Counter()
@@ -171,14 +169,4 @@ class HungarianRootMorphologicalTokenizer:
         print([self.vocab.idx2word[id] for id in ids])
 
 if __name__ == "__main__":
-
-    hun_tokenizer = HungarianRootMorphologicalTokenizer(pos_tagger_model_path="../data/hu_news/data/szeged.model")
-    #hun_tokenizer.train(file="../data/hu_news/data/test.tsv", vocab_size=50000)
-    #hun_tokenizer.save("hun_root_morph_50k.pickle")
-    hun_tokenizer.load("../data/hu_news/tokenizers/hu_morph_50000")
-    hun_tokenizer.print_ids(hun_tokenizer.encode("a kormány sok konfliktust vállalt , bár közben megszorításokat és reformokat is bevezetett ."))
-    print(hun_tokenizer.encode("a kormány sok konfliktust vállalt , bár közben megszorításokat és reformokat is bevezetett ."))
-    print(hun_tokenizer.article2ids("botrányosra sikerült az amerikai elnökjelöltek televíziós beszélgetése , míg trumpot támadták , bidennek csak alákérdeztek"))
-    print(hun_tokenizer.article2ids_extra("botrányosra sikerült az amerikai elnökjelöltek televíziós beszélgetése , míg trumpot támadták , bidennek csak alákérdeztek"))
-    print(hun_tokenizer.abstract2ids("botrányosra sikerült az amerikai elnökjelöltek televíziós beszélgetése , míg trumpot támadták , bidennek csak alákérdeztek", ['bidennek']))
-    print(hun_tokenizer.abstract2ids_extra("botrányosra sikerült az amerikai elnökjelöltek televíziós beszélgetése , míg trumpot támadták , bidennek csak alákérdeztek", ['bidennek']))
+    hun_tokenizer = HungarianRootMorphologicalTokenizer()

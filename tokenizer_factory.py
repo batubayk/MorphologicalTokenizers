@@ -35,9 +35,9 @@ class Tokenizers():
         elif tokenizer_type == 'tr_root_morph':
             self.tokenizer = TurkishRootMorphologicalTokenizer(zemberek_path=os.path.join(package_directory, 'data', 'zemberek-full.jar'))
         elif tokenizer_type == 'hu_morph':
-            self.tokenizer = HungarianMorphologicalTokenizer(pos_tagger_model_path =os.path.join(package_directory, 'data', 'szeged.model'))
+            self.tokenizer = HungarianMorphologicalTokenizer()
         elif tokenizer_type == 'hu_root_morph':
-            self.tokenizer = HungarianRootMorphologicalTokenizer(pos_tagger_model_path =os.path.join(package_directory, 'data', 'szeged.model'))
+            self.tokenizer = HungarianRootMorphologicalTokenizer()
         elif tokenizer_type == 'en_root_stem':
             self.tokenizer = EnglishStemTokenizer()
         else:
@@ -187,7 +187,7 @@ class Tokenizers():
             tokens = self.tokenizer.tokenize(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
             tokens = self.tokenizer.tokenize(text)
-        elif self.tokenizer_type.startswith('en_root_stem):
+        elif self.tokenizer_type.startswith('en_root_stem'):
             tokens = self.tokenizer.tokenize(text)
         else:
             tokens = self.tokenizer.tokenize(text)
@@ -209,7 +209,7 @@ class Tokenizers():
             ids = self.tokenizer.convert_tokens_to_ids(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
             ids = self.tokenizer.convert_tokens_to_ids(text)
-        elif self.tokenizer_type.startswith('en_root_stem):
+        elif self.tokenizer_type.startswith('en_root_stem'):
             ids = self.tokenizer.convert_tokens_to_ids(text)
         else:
             ids = self.tokenizer.convert_tokens_to_ids(text)
@@ -226,14 +226,12 @@ class Tokenizers():
 
 if __name__ == "__main__":
     model_type = 'tr_root_morph'
-    print(os.getcwd())
-    ZEMBEREK_PATH = os.path.join('data', 'zemberek-full.jar')
     TRAIN_FILE_PATH = os.path.join('data', 'test.tsv')
     TOKENIZER_PATH = "files/tr_root_morph_50000"
 
     tokenizer = Tokenizers(model_type)
-    #tokenizer.train([TRAIN_FILE_PATH], vocab_size=50000, min_freq=2)
-    #tokenizer.save(TOKENIZER_PATH)
+    tokenizer.train([TRAIN_FILE_PATH], vocab_size=50000, min_freq=2)
+    tokenizer.save(TOKENIZER_PATH)
     tokenizer.load(TOKENIZER_PATH)
     text = "eve giderken kitabımı geri verdim."
     tokens = tokenizer.tokenize(text)
