@@ -1,2 +1,3 @@
+nltk
 tokenizers
 jpype1
