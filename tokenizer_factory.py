@@ -2,7 +2,6 @@ from tokenizers import (CharBPETokenizer,
                         SentencePieceBPETokenizer,
                         BertWordPieceTokenizer)
 import os, re, pickle, sys, math, time
-from configs import *
 from hungarian_morphological_tokenizer import HungarianMorphologicalTokenizer
 from hungarian_root_morphological_tokenizer import HungarianRootMorphologicalTokenizer
 from turkish_morphological_tokenizer import TurkishMorphologicalTokenizer
