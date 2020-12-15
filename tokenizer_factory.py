@@ -9,6 +9,7 @@ from turkish_morphological_tokenizer import TurkishMorphologicalTokenizer
 from turkish_root_morphological_tokenizer import TurkishRootMorphologicalTokenizer
 from whitespace_tokenizer import WhiteSpaceTokenizer
 from sentencepice_tokenizer import SPTokenizer
+from english_root_stem_tokenizer import EnglishStemTokenizer
 import configs
 package_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -37,6 +38,8 @@ class Tokenizers():
             self.tokenizer = HungarianMorphologicalTokenizer(pos_tagger_model_path =os.path.join(package_directory, 'data', 'szeged.model'))
         elif tokenizer_type == 'hu_root_morph':
             self.tokenizer = HungarianRootMorphologicalTokenizer(pos_tagger_model_path =os.path.join(package_directory, 'data', 'szeged.model'))
+        elif tokenizer_type == 'en_root_stem':
+            self.tokenizer = EnglishStemTokenizer()
         else:
             raise Exception("Wrong tokenizer type!")
 
@@ -56,6 +59,8 @@ class Tokenizers():
         elif self.tokenizer_type == 'hu_morph':
             self.tokenizer.train(files[0], vocab_size, min_freq)
         elif self.tokenizer_type == 'hu_root_morph':
+            self.tokenizer.train(files[0], vocab_size, min_freq)
+        elif self.tokenizer_type == 'en_root_stem':
             self.tokenizer.train(files[0], vocab_size, min_freq)
         else:
             raise ('Cannot train wrong tokenizer value')
@@ -91,6 +96,8 @@ class Tokenizers():
             self.tokenizer.load(path)
         elif self.tokenizer_type == 'hu_root_morph':
             self.tokenizer.load(path)
+        elif self.tokenizer_type == 'en_root_stem':
+            self.tokenizer.load(path)
         else:
             raise Exception("Wrong tokenizer type!")
 
@@ -117,6 +124,8 @@ class Tokenizers():
             self.tokenizer.load(path)
         elif self.tokenizer_type == 'hu_root_morph':
             self.tokenizer.load(path)
+        elif self.tokenizer_type == 'en_root_stem':
+            self.tokenizer.load(path)
         else:
             raise Exception("Wrong tokenizer type!")
 
@@ -133,6 +142,8 @@ class Tokenizers():
         elif self.tokenizer_type.startswith('hu_morph'):
             encoded = self.tokenizer.encode(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
+            encoded = self.tokenizer.encode(text)
+        elif self.tokenizer_type.startswith('en_root_stem'):
             encoded = self.tokenizer.encode(text)
         else:
             encoded = self.tokenizer.encode(text)
@@ -154,6 +165,8 @@ class Tokenizers():
             decoded = self.tokenizer.decode(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
             decoded = self.tokenizer.decode(text)
+        elif self.tokenizer_type.startswith('en_root_stem'):
+            decoded = self.tokenizer.decode(text)
         else:
             decoded = self.tokenizer.decode(text)
             decoded = decoded.ids
@@ -174,6 +187,8 @@ class Tokenizers():
             tokens = self.tokenizer.tokenize(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
             tokens = self.tokenizer.tokenize(text)
+        elif self.tokenizer_type.startswith('en_root_stem):
+            tokens = self.tokenizer.tokenize(text)
         else:
             tokens = self.tokenizer.tokenize(text)
             tokens = decoded.ids
@@ -193,6 +208,8 @@ class Tokenizers():
         elif self.tokenizer_type.startswith('hu_morph'):
             ids = self.tokenizer.convert_tokens_to_ids(text)
         elif self.tokenizer_type.startswith('hu_root_morph'):
+            ids = self.tokenizer.convert_tokens_to_ids(text)
+        elif self.tokenizer_type.startswith('en_root_stem):
             ids = self.tokenizer.convert_tokens_to_ids(text)
         else:
             ids = self.tokenizer.convert_tokens_to_ids(text)
