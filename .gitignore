@@ -9,4 +9,3 @@ venv
 *.model
 *.vocab
 *.pickle
-data/hfst

@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: hfst
+Description: Finite-state transducer library bridge for multiple FLOSS packages
+Version: 3.15.2
+Libs: -L${libdir} -lhfst
+Cflags: -I${includedir}/hfst/
