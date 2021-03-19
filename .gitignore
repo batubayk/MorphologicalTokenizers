@@ -5,4 +5,8 @@ venv
 *.tsv
 *.csv
 *.txt
+*.dat
+*.model
+*.vocab
+*.pickle
 data/hfst
