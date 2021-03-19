@@ -1,0 +1,28 @@
+{
+    "tokenizer_class":"tokenizer_modules.hungarian_morphological_tokenizer.HungarianMorphologicalTokenizer",
+    "params":{
+        "vocab_size":32000,
+        "min_freq": 0,
+        "input_dir": "data/",
+        "input_file_pattern": "test2*.txt",
+        "token_affix": "##",
+        "special_tokens": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[CLS]": 2,
+            "[SEP]": 3,
+            "[MASK]": 4
+        },
+        "pos_tagger_model_path": "purepospy/purepospy/szeged.model",
+        "hfst_lookup": "data/hfst/bin/hfst-lookup",
+        "suffixes": {
+            "root_only": false,
+            "combined": false,
+            "last_only": false
+        },
+        "model": {
+            "path": "outputs/hu_seperate_suffix_32k.dat",
+            "overwrite": true
+        }
+    }
+}

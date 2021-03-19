@@ -1,0 +1,20 @@
+{
+    "tokenizer_class":"tokenizer_modules.whitespace_tokenizer.WhiteSpaceTokenizer",
+    "params":{
+        "vocab_size":32000,
+        "min_freq": 0,
+        "input_dir": "data/",
+        "input_file_pattern": "*.txt",
+        "special_tokens": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[CLS]": 2,
+            "[SEP]": 3,
+            "[MASK]": 4
+        },
+        "model": {
+            "path": "outputs/whitespace_32k.dat",
+            "overwrite": true
+        }
+    }
+}

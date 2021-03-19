@@ -1,0 +1,21 @@
+{
+    "tokenizer_class":"tokenizer_modules.english_stem_tokenizer.EnglishStemTokenizer",
+    "params":{
+        "vocab_size":32000,
+        "min_freq": 0,
+        "input_dir": "data/",
+        "input_file_pattern": "*.txt",
+        "token_affix": "##",
+        "special_tokens": {
+            "[PAD]": 0,
+            "[UNK]": 1,
+            "[CLS]": 2,
+            "[SEP]": 3,
+            "[MASK]": 4
+        },
+        "model": {
+            "path": "outputs/english_stem_32k.dat",
+            "overwrite": true
+        }
+    }
+}

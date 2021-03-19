@@ -1,10 +1,10 @@
 {
-    "tokenizer_class":"turkish_auto_morphological_tokenizer.TurkishAutoMorphologicalTokenizer",
+    "tokenizer_class":"tokenizer_modules.turkish_morphological_tokenizer.TurkishMorphologicalTokenizer",
     "params":{
         "vocab_size":32000,
         "min_freq": 0,
         "input_dir": "data/",
-        "input_file_pattern": "*.txt",
+        "input_file_pattern": "test.txt",
         "token_affix": "##",
         "special_tokens": {
             "[PAD]": 0,
@@ -14,18 +14,13 @@
             "[MASK]": 4
         },
         "zemberek_path": "data/zemberek-full.jar",
-        "root":{
-            "max_len": -1,
-            "use_lemma": false,
-            "remove_infinitive": false
-        },
         "suffixes": {
-            "combine": false,
+            "root_only": false,
+            "combined": false,
             "last_only": false
         },
-        "escape_pattern": "(?<=[a-zA-Z0-9ğĞçCıIiİöÖŞşüÜ])[\\’\\'\\'](?=[a-zA-Z0-9ğĞçCıIiİöÖŞşüÜ])",
         "model": {
-            "path": "files/{file_name}/model.dat",
+            "path": "outputs/tr_seperate_suffix_32k.dat",
             "overwrite": true
         }
     }

@@ -6,4 +6,3 @@ venv
 *.csv
 *.txt
 data/hfst
-files

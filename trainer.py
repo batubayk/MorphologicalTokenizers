@@ -9,8 +9,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     tokenizer = Tokenizers.create(args.config_file)
     tokenizer.train()
-    tokenizer.save()
-    ids = tokenizer.encode("atatürk bu sabah yazı yazıyordu .")
-    tokenizer.print_ids(ids)
-    print(tokenizer.decode(ids))
-    print()

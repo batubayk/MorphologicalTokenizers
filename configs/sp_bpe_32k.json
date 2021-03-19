@@ -1,0 +1,13 @@
+{
+    "tokenizer_class":"tokenizer_modules.sentencepiece_tokenizer.SPTokenizer",
+    "params":{
+        "vocab_size":1000,
+        "min_freq": 0,
+        "input_dir": "data/",
+        "input_file_pattern": "*.txt",
+        "model": {
+            "prefix": "outputs/sp_bpe_32k"
+        },
+        "model_type": "bpe"
+    }
+}
