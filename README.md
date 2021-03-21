@@ -8,10 +8,10 @@ For Hungarian tokenizers please follow the installation guides for emMorphPy (ht
 and PurePOSPy (https://github.com/dlt-rilmta/purepospy).
 The HFST binaries are included under data folder so there is no need to install it seperately.
 
-Note: If on Mac OS makefile for Purepospy will not work so following the steps below should do the job;
-cd purepospy/
-make __extra-deps
-pip install -r requirements.txt
+Note: If on Mac OS makefile for Purepospy will not work so following the steps below should do the job; <br />
+cd purepospy/ <br />
+make __extra-deps <br />
+pip install -r requirements.txt <br />
 
 ## Adding Other Tokenizers
 The structure is intented to be flexible so that other tokenizers can be added without many change.
