@@ -2,9 +2,9 @@ import os
 from pathlib import Path
 
 from jpype import JClass, JString, getDefaultJVMPath, startJVM, isJVMStarted
-
 from tokenizer_modules.tokenizer import Tokenizer
 from tokenizer_modules.vocabulary import Vocabulary
+
 package_directory = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -16,7 +16,7 @@ class TurkishMorphologicalTokenizer(Tokenizer):
             'params'] else 'data/zemberek-full.jar'
 
         if not os.path.isabs(self.zemberek_path):
-            self.zemberek_path = "/".join(package_directory.split('/')[:-1])+'/'+self.zemberek_path
+            self.zemberek_path = "/".join(package_directory.split('/')[:-1]) + '/' + self.zemberek_path
 
         self.vocab = Vocabulary(self.configs['params']['special_tokens']) if 'special_tokens' in self.configs[
             'params'] else Vocabulary()

@@ -1,3 +1,4 @@
+import logging
 import pickle
 import time
 from abc import ABC, abstractmethod
@@ -39,7 +40,7 @@ class Tokenizer(ABC):
         for i, word in enumerate(words):
             self.vocab.add_word(word)
 
-        print("Training elapsed time: ", time.time() - begin_time)
+        logging.info("Training elapsed time: ", time.time() - begin_time)
         self.save()
         return self.vocab
 
@@ -74,7 +75,11 @@ class Tokenizer(ABC):
 
     def load(self):
         model_file_path = Path(self.configs['params']['model']['path'])
-        self.vocab = pickle.load(open(model_file_path, "rb"))
+        if model_file_path.exists():
+            self.vocab = pickle.load(open(model_file_path, "rb"))
+            logging.info("Loading model file: {}".format(model_file_path))
+        else:
+            logging.error("Model not found at path: {}".format(model_file_path))
 
     def encode(self, text):
         tokens = self.tokenize(text)
